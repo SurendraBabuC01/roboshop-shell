@@ -9,7 +9,7 @@ dnf install rabbitmq-server -y
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> start rabbitmq <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 systemctl enable rabbitmq-server
-systemctl start rabbitmq-server
+systemctl restart rabbitmq-server
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> add app user <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 rabbitmqctl add_user roboshop roboshop123

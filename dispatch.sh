@@ -26,4 +26,4 @@ cp /home/centos/roboshop-shell/dispatch.service /etc/systemd/system/dispatch.ser
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> start dispatch <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 systemctl daemon-reload
 systemctl enable dispatch
-systemctl start dispatch
+systemctl restart dispatch

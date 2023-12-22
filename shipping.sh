@@ -28,7 +28,7 @@ cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.ser
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> start shipping <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 systemctl daemon-reload
 systemctl enable shipping
-systemctl start shipping
+systemctl restart shipping
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Install mysql client <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf install mysql -y
