@@ -5,7 +5,7 @@ echo -e "/e[36m>>>>>>>>>>>>>>>>>>>>>> Install mongodb <<<<<<<<<<<<<<<<<<<<<</e[0
 dnf install mongodb-org -y
 
 echo -e "/e[36m>>>>>>>>>>>>>>>>>>>>>> Update listen address from 127.0.0.1 to 0.0.0.0 <<<<<<<<<<<<<<<<<<<<<</e[0m"
-sed -e 's|127.0.0.1|0.0.0.0.0|' /etc/mongod.conf
+sed -i -e 's|127.0.0.1|0.0.0.0.0|' /etc/mongod.conf
 
 echo -e "/e[36m>>>>>>>>>>>>>>>>>>>>>> Start mongodb <<<<<<<<<<<<<<<<<<<<<</e[0m"
 systemctl enable mongod
