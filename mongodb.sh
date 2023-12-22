@@ -9,5 +9,5 @@ sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/mongod.conf
 
 echo -e "/e[36m>>>>>>>>>>>>>>>>>>>>>> Start mongodb <<<<<<<<<<<<<<<<<<<<<</e[0m"
 systemctl enable mongod
-systemctl start mongod
+systemctl restart mongod
 
