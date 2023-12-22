@@ -8,8 +8,8 @@ echo -e "/e[36m>>>>>>>>>>>>>>>>>>>>>> Install redis <<<<<<<<<<<<<<<<<<<<<</e[0m"
 dnf install redis -y
 
 echo -e "/e[36m>>>>>>>>>>>>>>>>>>>>>> Update listen address from 127.0.0.1 to 0.0.0.0 <<<<<<<<<<<<<<<<<<<<<</e[0m"
-sed -i -e 's|127.0.0.1|0.0.0.0|g' /etc/mongo.repo
+sed -i -e 's|127.0.0.1|0.0.0.0|g' /etc/redis.conf
 
 echo -e "/e[36m>>>>>>>>>>>>>>>>>>>>>> start redis <<<<<<<<<<<<<<<<<<<<<</e[0m"
 systemctl enable redis
-systemctl start redis
+systemctl restart redis
