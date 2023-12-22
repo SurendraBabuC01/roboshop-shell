@@ -25,17 +25,14 @@ mv target/shipping-1.0.jar shipping.jar
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> copy shipping service file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> start shipping <<<<<<<<<<<<<<<<<<<<<<\e[0m"
-systemctl daemon-reload
-systemctl enable shipping
-systemctl restart shipping
-
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Install mysql client <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf install mysql -y
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Load Schema <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 mysql -h mysql-dev.surendrababuc01.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Restart shipping <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> start shipping <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+systemctl daemon-reload
+systemctl enable shipping
 systemctl restart shipping
 
