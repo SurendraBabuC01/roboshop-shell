@@ -2,7 +2,7 @@ echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Install nginx <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf install nginx -y
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Copy roboshop.conf file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
-cp roboshop.conf \etc/nginx/default.d/roboshop.conf
+cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Download app content <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 rm -rf /usr/share/nginx/html/*
