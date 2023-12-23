@@ -1,5 +1,5 @@
-realpath = $(realpath $0)
-script_path=$(dirname realpath)
+path = $(realpath $0)
+script_path=$(dirname path)
 source ${script_path}/common.sh
 
 echo $script_path
