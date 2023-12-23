@@ -3,6 +3,7 @@ source common.sh
 script_name=$0
 script_path=$(dirname $0)
 
+echo ${script_name}
 echo ${script_path}
 exit
 
