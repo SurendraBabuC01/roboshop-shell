@@ -1,7 +1,8 @@
-script_path=$(dirname $0)
+realpath = $(realpath $0)
+script_path=$(dirname realpath)
 source ${script_path}/common.sh
 
-realpath "$0"
+echo script_path
 exit
 
 func_nodejs
