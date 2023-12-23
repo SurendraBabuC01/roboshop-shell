@@ -1,6 +1,9 @@
 source common.sh
 
-pwd
+script_name=$0
+script_path=$(dirname $0)
+
+echo script_name script_path
 exit
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Enable nodejs:18 <<<<<<<<<<<<<<<<<<<<<<\e[0m"
