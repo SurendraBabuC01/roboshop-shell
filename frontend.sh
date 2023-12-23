@@ -1,3 +1,5 @@
+source common.sh
+
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Install nginx <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf install nginx -y
 

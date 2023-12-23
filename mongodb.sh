@@ -1,3 +1,5 @@
+source common.sh
+
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Copy mongo repo file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 cp mongo.repo \etc/yum.repos.d/mongo.repo
 
