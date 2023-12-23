@@ -1,6 +1,9 @@
 script_path=$(dirname $0)
 source ${script_path}/common.sh
 
+relpath "$0"
+exit
+
 func_nodejs
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Copy mongodb repo file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
