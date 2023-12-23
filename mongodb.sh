@@ -1,7 +1,7 @@
 source common.sh
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Copy mongo repo file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
-cp mongo.repo \etc/yum.repos.d/mongo.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Install mongodb <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf install mongodb-org -y
