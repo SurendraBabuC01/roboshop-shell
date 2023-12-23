@@ -1,11 +1,5 @@
-source common.sh
-
-script_name=$0
 script_path=$(dirname $0)
-
-echo ${script_name}
-echo ${script_path}
-exit
+source ${script_path}/common.sh
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Enable nodejs:18 <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf module disable nodejs -y
@@ -33,7 +27,7 @@ cd /app
 npm install
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Copy catalogue service file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service
+cp ${script_path}/catalogue.service /etc/systemd/system/catalogue.service
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Start Catalogue <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 systemctl daemon-reload
@@ -41,7 +35,7 @@ systemctl enable catalogue
 systemctl restart catalogue
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Copy mongodb repo file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
-cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
+cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Install mongodb client <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf install mongodb-org-shell -y
