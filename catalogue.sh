@@ -1,5 +1,8 @@
 source common.sh
 
+pwd
+exit
+
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Enable nodejs:18 <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
