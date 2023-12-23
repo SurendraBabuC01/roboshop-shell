@@ -1,4 +1,4 @@
-path_original=$(realpath $0)
+path_original=realpath $0
 script_path=$(dirname path_original)
 source ${script_path}/common.sh
 
