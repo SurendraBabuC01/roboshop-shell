@@ -23,11 +23,11 @@ func_schema_setup() {
   if [ "${schema_setup}" == "mongo" ]; then
     func_print_head "Copy mongodb repo file"
     cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
-    func_stat_check
+    func_stat_check $?
 
     func_print_head> "Install mongodb client"
     dnf install mongodb-org-shell -y &>>${log_file}
-    func_stat_check
+    func_stat_check $?
 
     func_print_head "Load Schema"
     mongo --host mongodb-dev.surendrababuc01.online </app/schema/${component}.js &>>${log_file}
