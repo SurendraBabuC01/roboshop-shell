@@ -129,11 +129,11 @@ func_python() {
   pip3.6 install -r requirements.txt
   func_stat_check $?
 
-  func_systemd_setup
-
   func_print_head "Update Passwords in System Service file"
   sed -i -e "s|rabbitmq_appuser_password|${rabbitmq_appuser_password}|" ${script_path}/${component}.service
   func_stat_check $?
+
+  func_systemd_setup
 }
 
 func_golang() {
