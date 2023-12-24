@@ -27,7 +27,7 @@ systemctl restart rabbitmq-server
 func_stat_check $?
 
 func_print_head "add app user"
-rabbitmqctl add_user roboshop ${rabbitmq_app_password}
+rabbitmqctl add_user roboshop ${rabbitmq_appuser_password}
 func_stat_check $?
 
 func_print_head "set_permissions of app user"
