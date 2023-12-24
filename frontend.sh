@@ -3,7 +3,7 @@ script_path=$(dirname ${script})
 source ${script_path}/common.sh
 
 func_print_head "Install nginx"
-dnf install nginx -y
+dnf install nginx -y &>>/tmp/roboshop.log
 func_stat_check $?
 
 func_print_head "Copy roboshop conf file"
