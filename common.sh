@@ -77,9 +77,9 @@ func_nodejs() {
   cd /app
   npm install
 
-  func_systemd_setup
-  
   func_schema_setup
+
+  func_systemd_setup
 }
 
 func_java() {
@@ -96,6 +96,7 @@ func_java() {
   mv target/${component}-1.0.jar ${component}.jar
 
  func_schema_setup
+
  func_systemd_setup
 }
 
