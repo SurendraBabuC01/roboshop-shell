@@ -6,6 +6,7 @@ log_file="/tmp/roboshop.log"
 
 func_print_head() {
    echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> $1 <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+   echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> $1 <<<<<<<<<<<<<<<<<<<<<<\e[0m" &>>${log_file}
 }
 
 func_stat_check() {
@@ -46,7 +47,11 @@ func_schema_setup() {
 
 func_app_prereq() {
   func_print_head "Add Application user"
-  useradd ${app_user} &>>${log_file}
+  id ${app_user} &>>${log_file}
+  if [ $? -ne "0" ] &>>${log_file}
+  then
+    useradd ${app_user} &>>${log_file}
+  fi
   func_stat_check $?
 
   func_print_head "Create app directory"
