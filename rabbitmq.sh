@@ -10,25 +10,25 @@ fi
 
 func_print_head "Download erlang repo"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
-func_stat_check
+func_stat_check $?
 
 func_print_head "Download rabbitmq repo file"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
-func_stat_check
+func_stat_check $?
 
 func_print_head "Install rabbitmq"
 dnf install rabbitmq-server -y
-func_stat_check
+func_stat_check $?
 
 func_print_head "start rabbitmq"
 systemctl enable rabbitmq-server
 systemctl restart rabbitmq-server
-func_stat_check
+func_stat_check $?
 
 func_print_head "add app user"
 rabbitmqctl add_user roboshop ${rabbitmq_app_password}
-func_stat_check
+func_stat_check $?
 
 func_print_head "set_permissions of app user"
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
-func_stat_check
+func_stat_check $?
