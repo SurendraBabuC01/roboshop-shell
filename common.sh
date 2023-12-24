@@ -6,6 +6,16 @@ func_print_head() {
    echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> $1 <<<<<<<<<<<<<<<<<<<<<<\e[0m"
 }
 
+func_stat_check() {
+  if [ $? -eq "0" ]
+  then
+    echo -e "\e[32mSUCEESS\e[0m"
+  else
+    echo -e "\e[31mFAILURE\e[0m"
+    exit 1
+  fi
+}
+
 
 func_schema_setup() {
   if [ "${schema_setup}" == "mongo" ]; then
@@ -41,8 +51,6 @@ func_app_prereq() {
 
   func_print_head "Unzip app content"
   unzip /tmp/${component}.zip
-
-
 }
 
 func_systemd_setup() {
@@ -87,9 +95,8 @@ func_java() {
   func_print_head "Move ${component} jar file"
   mv target/${component}-1.0.jar ${component}.jar
 
- func_systemd_setup
-
  func_schema_setup
+ func_systemd_setup
 }
 
 func_python() {
