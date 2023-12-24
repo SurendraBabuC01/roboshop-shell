@@ -20,7 +20,6 @@ func_stat_check() {
   fi
 }
 
-
 func_schema_setup() {
   if [ "${schema_setup}" == "mongo" ]; then
     func_print_head "Copy mongodb repo file"
