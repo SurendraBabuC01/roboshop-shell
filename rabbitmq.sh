@@ -10,26 +10,26 @@ if [ -z "$rabbitmq_appuser_password" ]
 fi
 
 func_print_head "Download erlang repo"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>${log_file}
 func_stat_check $?
 
 func_print_head "Download rabbitmq repo file"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>>${log_file}
 func_stat_check $?
 
 func_print_head "Install rabbitmq"
-dnf install rabbitmq-server -y
+dnf install rabbitmq-server -y &>>${log_file}
 func_stat_check $?
 
 func_print_head "start rabbitmq"
-systemctl enable rabbitmq-server
-systemctl restart rabbitmq-server
+systemctl enable rabbitmq-server &>>${log_file}
+systemctl restart rabbitmq-server &>>${log_file}
 func_stat_check $?
 
 func_print_head "add app user"
-rabbitmqctl add_user roboshop ${rabbitmq_appuser_password}
+rabbitmqctl add_user roboshop ${rabbitmq_appuser_password} &>>${log_file}
 func_stat_check $?
 
 func_print_head "set_permissions of app user"
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${log_file}
 func_stat_check $?
