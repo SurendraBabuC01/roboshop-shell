@@ -1,18 +1,22 @@
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Download erlang repo <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+script=$(realpath "$0")
+script_path=$(dirname ${script})
+source ${script_path}/common.sh
+
+func_print_head "Download erlang repo"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Download rabbitmq repo file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print_head "Download rabbitmq repo file"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Install rabbitmq <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print_head "Install rabbitmq"
 dnf install rabbitmq-server -y
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> start rabbitmq <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print_head "start rabbitmq"
 systemctl enable rabbitmq-server
 systemctl restart rabbitmq-server
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> add app user <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print_head "add app user"
 rabbitmqctl add_user roboshop roboshop123
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> set_permissions of app user <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print_head "set_permissions of app user"
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"

@@ -1,16 +1,20 @@
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Disable mysql default version <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+script=$(realpath "$0")
+script_path=$(dirname ${script})
+source ${script_path}/common.sh
+
+func_print_head "Disable mysql default version"
 dnf module disable mysql -y
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Copy mysql repo file <<<<<<<<<<<<<<<<<<<<<<\e[0m"
-cp /home/centos/roboshop-shell/mysql.repo /etc/yum.repos.d/mysql.repo
+func_print_head "Copy mysql repo file"
+cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> Install mysql <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print_head "Install mysql"
 dnf install mysql-community-server -y
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> start mysql <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print_head "start mysql"
 systemctl enable mysqld
 systemctl restart mysqld
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>> set mysql root password <<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print_head "set mysql root password" +
 mysql_secure_installation --set-root-pass RoboShop@1
 
